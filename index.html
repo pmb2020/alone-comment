@@ -32,10 +32,18 @@
 			.com_ul_bom span{margin-right: 15px;}
 			.com_two{margin-top: 16px;background-color: #f3f3f3;padding: 15px;}
 			.com_two_div{font-size: 15px;color: #888;}
-			.com_two li{margin-bottom: 20px;}
+			.com_two li{margin-bottom: 20px;flex-wrap: wrap;}
+			.com_two li :hover #replay{display: inline-block;}
 			.com_two a{color: #15b6e6;}
+			.com_two #replay{display: none;}
 			.mb15{margin-bottom: 15px;}
 			.mb5{margin-bottom: 5px;}
+			#replay{cursor: pointer;}
+			/* 回复 */
+			.replay_btn{background-color: #3CBF4C;outline: none;border: none;color: #fff;padding: 6px 25px;border-radius: 3px;align-self: flex-end;cursor: pointer;}
+			.replay_div{display: flex;flex-wrap: wrap;flex-direction: row-reverse;margin-top: 15px;display: none;}
+			.replay_div input{width: 100%;height: 25px;padding: 8px 12px;}
+			.repaly_btn_div{padding: 12px 0;flex-wrap: wrap;}
 		</style>
 	</head>
 	<body>
@@ -43,25 +51,25 @@
 			<div class="comment_div">
 				<h5 class="com_h5" style="font-size: 16px;">文章评论</h5>
 				<div class="com_top">
-					<form action="#" method="post">
+					<form id="form0" action="#" method="post" onsubmit="return false">
 					<div class="com_input_div" style="">
 						<label style="">昵称：</label>
-						<input class="com_input" type="text" name="username">
+						<input class="com_input" type="text" name="username" value="轻微的风">
 						<span class="com_tip" style=""><span style="color: red;">*</span> 必填项</span>
 					</div>
 					<div class="com_input_div" >
 						<label style="">邮箱：</label>
-						<input class="com_input" type="text" name="username">
+						<input class="com_input" type="email" name="email">
 						<span class="com_tip" style=""><span style="color: red;">*</span> 必填项</span>
 					</div>
 					<div class="com_input_div" style="">
 						<label style="">网址：</label>
-						<input class="com_input" type="text" name="username">
+						<input class="com_input" type="text" name="href">
 						<span class="com_tip">可选</span>
 					</div>
 					<div class="com_area_div" style="">
-						<textarea placeholder="欢迎到此一游!"></textarea>
-						<input style="outline: none;background-color: #15B6E6;border: none;color: #fff;padding: 8px 15px;border-radius: 3px;margin-top: 15px;" type="submit" name=""  value="发表评论" />
+						<textarea name="title" placeholder="欢迎到此一游!">欢迎到此一游！</textarea>
+						<input onclick="comment()" style="cursor: pointer;outline: none;background-color: #15B6E6;border: none;color: #fff;padding: 8px 15px;border-radius: 3px;margin-top: 15px;" type="submit" name=""  value="发表评论" />
 					</div>
 					</form>
 				</div>
@@ -75,7 +83,13 @@
 								<p class="com_info_center" style="">人，终究会有老去的一天。所以，我们应该这样面对生活，面朝大海，春暖花开花开花落。这样，当你回首过去，你会发现，我TM的到底都错过了什么！</p>
 								<div class="com_ul_bom">
 									<span>45分钟前</span>
-									<span>回复</span>
+									<span id="replay"><a href="javascript:void(0)">回复</a></span>
+								</div>
+								<div class="replay_div">
+									<input class="com_input" type="text" name="title" id="" value="回复@王先生 : "/>
+									<div class="repaly_btn_div">
+										<button class="replay_btn">回复</button>
+									</div>
 								</div>
 								<!-- 二级评论 -->
 								<ul class="com_two">
@@ -84,7 +98,14 @@
 											<p class="mb5"><a href="#">猫小鱼 </a>回复 <a href="#">@王先生</a>：<span>你说的都对！</span></p>
 											<div class="com_ul_bom">
 												<span>11分钟前</span>
-												<span>回复</span>
+												<span id="replay"><a href="javascript:void(0)" >回复</a></span>
+											</div>
+											
+										</div>
+										<div class="replay_div" style="display: flex;">
+											<input class="com_input" type="text" name="title" id="" value="回复@王先生 : "/>
+											<div class="repaly_btn_div">
+												<button class="replay_btn">回复</button>
 											</div>
 										</div>
 									</li>
@@ -93,7 +114,7 @@
 											<p class="mb5"><a href="#">王先生 </a>回复 <a href="#">@猫小鱼</a>：<span>不知道你在说什么啊？</span></p>
 											<div class="com_ul_bom">
 												<span>15分钟前</span>
-												<span>回复</span>
+												<span id="replay">回复</span>
 											</div>
 										</div>
 									</li>
@@ -102,7 +123,7 @@
 											<p class="mb5"><a href="#">猫小鱼 </a>回复 <a href="#">@王先生</a>：<span>人，终究会有老去的一天。所以，我们应该这样面对生活，面朝大海，春暖花开花开花落。这样，当你回首过去，你会发现，我TM的到底都错过了什么！</span></p>
 											<div class="com_ul_bom">
 												<span>48秒前</span>
-												<span>回复</span>
+												<span id="replay">回复</span>
 											</div>
 										</div>
 									</li>
@@ -116,7 +137,7 @@
 								<p class="com_info_center" style="">在亿万人海相遇有同样默契是多么不容易，你懂得我的固执我懂你脾气，两颗心在靠近，等不及解释我的心情，怕错过爱上你的时机。浪漫已经准备就全新的旅行多运在最美的年纪遇见你没有遗憾和可惜。</p>
 								<div class="com_ul_bom">
 									<span>45分钟前</span>
-									<span>回复</span>
+									<span id="replay">回复</span>
 								</div>
 							</div>
 						</li>
@@ -127,7 +148,7 @@
 								<p class="com_info_center" style="">人，终究会有老去的一天。所以，我们应该这样面对生活，面朝大海，春暖花开花开花落。这样，当你回首过去，你会发现，我TM的到底都错过了什么！</p>
 								<div class="com_ul_bom">
 									<span>45分钟前</span>
-									<span>回复</span>
+									<span id="replay">回复</span>
 								</div>
 							</div>
 						</li>
@@ -138,7 +159,7 @@
 								<p style="text-align: justify;font-size: 15px;color: #666;margin-bottom: 15px;">我喜欢你，就像风走了八万里，不问归期！</p>
 								<div class="com_ul_bom">
 									<span>48分钟前</span>
-									<span>回复</span>
+									<span id="replay">回复</span>
 								</div>
 								<!-- 二级评论 -->
 								<ul class="com_two">
@@ -147,7 +168,7 @@
 											<p class="mb5"><a href="#">Long Bro </a>回复 <a href="#">@猫小鱼</a>：<span>谢谢你对我的喜欢，你是个好人！</span></p>
 											<div class="com_ul_bom">
 												<span>11分钟前</span>
-												<span>回复</span>
+												<span id="replay">回复</span>
 											</div>
 										</div>	
 									</li>
@@ -156,7 +177,7 @@
 											<p class="mb5"><a href="#">猫小鱼 </a>回复 <a href="#">@Long Bro</a>：<span>不要再对我发好人卡了！！！</span></p>
 											<div class="com_ul_bom">
 												<span>11分钟前</span>
-												<span>回复</span>
+												<span id="replay">回复</span>
 											</div>
 										</div>
 									</li>
@@ -170,7 +191,7 @@
 								<p class="com_info_center" style="">一日为艾欧尼亚人,终身为艾欧尼亚人！</p>
 								<div class="com_ul_bom">
 									<span>45分钟前</span>
-									<span>回复</span>
+									<span id="replay">回复</span>
 								</div>
 							</div>
 						</li>
@@ -178,7 +199,63 @@
 				</div>
 			</div>
 		</div>
-	<!-- <script src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script> -->
 	<script src="js/headimg.js"></script>
+	<script src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
+	<script>
+		function comment(){
+			// console.log($('#form0').serialize());//ajax提交表单数据
+			var username=$("input[ name='username' ] ").val();
+			var title=$("textarea[ name='title' ] ").val();
+			var time='45分钟前';
+			var avatar_img='src="'+LetterAvatar(username,50)+'" title="'+username+'" alt="'+username+'"';
+			var com='<li><img class="round" width="50" height="50" '+avatar_img+'><div class="com_right" style=""><p class="com_info_top"><a href="#">'+username+'</a><span style="float: right;">顶（18）</span></p><p class="com_info_center" style="">'+title+'</p><div class="com_ul_bom"><span>'+time+'</span><span id="replay"><a href="javascript:void(0)">回复</a></span></div></div></li>';
+			// $('.com_ul').prepend('<p>你好啊</p>')
+			$('.com_ul').prepend(com);
+			
+		}
+		$(document).ready(function(){
+			$('#replay1').click(function(){
+				var replay_div='<div class="replay_div"><input class="com_input" type="text" name="title" id="" value="回复@王先生 : "/><div class="repaly_btn_div"><button class="replay_btn">回复</button></div></div>';
+				$('.replay_div').css('display','flex');
+				// console.log($('.com_right .replay_div').length);
+				//最多只能有一个回复框
+				if($('.com_right .replay_div').length<1){
+					$(this).parents('.com_ul_bom').after(replay_div);
+				}
+				// console.log($(this).parents('.com_ul_bom'));
+			})
+			//点击回复事件
+			$('.com_ul').on('click','#replay',function(e){
+				console.log('点击了回复');		
+				$('.replay_div').css('display','flex');
+				var replay_div='<div class="replay_div"><input class="com_input" type="text" name="title" id="" value="回复@王先生 : "/><div class="repaly_btn_div"><button class="replay_btn">回复</button></div></div>';
+				// console.log($('.com_right .replay_div').length);
+				if($('.com_right .replay_div').length<1){
+					$(this).parents('.com_ul_bom').after(replay_div);
+				}
+				console.log($(this).parents('.com_ul_bom'))
+			})
+		})
+		
+		function test(elm){
+			var replay_div='<div class="replay_div"><input class="com_input" type="text" name="title" id="" value="回复@王先生 : "/><div class="repaly_btn_div"><button class="replay_btn">回复</button></div></div>';
+			
+			console.log(elm);
+		}
+		//生成随机整数
+		function randomNum(minNum,maxNum){ 
+		    switch(arguments.length){ 
+		        case 1: 
+		            return parseInt(Math.random()*minNum+1,10); 
+		        break; 
+		        case 2: 
+		            return parseInt(Math.random()*(maxNum-minNum+1)+minNum,10); 
+		        break; 
+		            default: 
+		            return 0; 
+		            break; 
+		    } 
+		}
+	</script>
 	</body>
 </html>
