@@ -6,29 +6,178 @@
 		<title>测试页面</title>
 		<style>
 			*{padding: 0;margin: 0}
+			body{background-color: #f6f6f6;}
+			ul{list-style: none;}
+			a{text-decoration: none;}
 			.round{border-radius: 50%}
-			.container{width: 600px;min-height: 800px;background-color: #e3e3e3}
-			.comment_div{padding: 30px;background-color: #eaeaea}
-			.com_input{padding: 10px;outline-style: none;border:1px solid #ccc;border-radius: 3px;width: 100%}
+			.container{width: 700px;min-height: 800px;background-color: #e3e3e3;padding: 50px;}
+			.comment_div{padding: 30px;background-color: #fff}
+			.com_input_div{margin-bottom: 10px;display: flex;display:-webkit-flex;margin-bottom: 20px;align-items: center;}
+			.com_input_div label{align-content: center;vertical-align: middle;}
+			.com_input{padding: 8px;outline-style: none;border:1px solid #ccc;border-radius: 3px;}
+			.com_top1{display: flex;display:-webkit-flex;}
+			.com_tip{margin-left: 15px;color: #888;font-size: 14px;}
+			.com_area_div{display: flex;flex-wrap: wrap;flex-direction: row-reverse;}
+			.com_area_div textarea{width: 100%;height: 100px;outline: none;border: 1px solid #ccc;padding: 10px;resize: none;font-size: 15px;color: #666;border-radius: 3px;}
+			.com_ul{margin-top: 20px;}
+			.com_ul li{display: flex;margin-bottom: 30px;}
+			.com_h5{font-size: 16px;padding: 18px 0;margin-bottom: 30px;border-bottom: 1px solid #ccc;font-weight: normal;position: relative;}
+			.com_h5:after{content: "";position: absolute;width: 60px;height: 2px;content: "";background: #000;left: 0;bottom: 0;-moz-transition: all .5s ease;-webkit-transition: all .5s ease;transition: all .5s ease;}
+			.com_h5:hover:after{width: 80px;}
+			.com_right{flex: 1;margin-left: 15px;}
+			.com_info_top{margin-bottom: 5px;color: #888;font-size: 15px;}
+			.com_info_top a{font-size: 18px;color: #3cbf4c;}
+			.com_info_center{text-align: justify;font-size: 15px;color: #666;margin-bottom: 15px;}
+			.com_ul_bom{font-size: 14px;color: #888;}
+			.com_ul_bom span{margin-right: 15px;}
+			.com_two{margin-top: 16px;background-color: #f3f3f3;padding: 15px;}
+			.com_two_div{font-size: 15px;color: #888;}
+			.com_two li{margin-bottom: 20px;}
+			.com_two a{color: #15b6e6;}
+			.mb15{margin-bottom: 15px;}
+			.mb5{margin-bottom: 5px;}
 		</style>
 	</head>
 	<body>
 		<div class="container">
 			<div class="comment_div">
+				<h5 class="com_h5" style="font-size: 16px;">文章评论</h5>
 				<div class="com_top">
-					<div class="" style="margin-bottom: 10px">
-						<label>昵称：</label>
+					<form action="#" method="post">
+					<div class="com_input_div" style="">
+						<label style="">昵称：</label>
 						<input class="com_input" type="text" name="username">
+						<span class="com_tip" style=""><span style="color: red;">*</span> 必填项</span>
 					</div>
-					<textarea>as</textarea>
+					<div class="com_input_div" >
+						<label style="">邮箱：</label>
+						<input class="com_input" type="text" name="username">
+						<span class="com_tip" style=""><span style="color: red;">*</span> 必填项</span>
+					</div>
+					<div class="com_input_div" style="">
+						<label style="">网址：</label>
+						<input class="com_input" type="text" name="username">
+						<span class="com_tip">可选</span>
+					</div>
+					<div class="com_area_div" style="">
+						<textarea placeholder="欢迎到此一游!"></textarea>
+						<input style="outline: none;background-color: #15B6E6;border: none;color: #fff;padding: 8px 15px;border-radius: 3px;margin-top: 15px;" type="submit" name=""  value="发表评论" />
+					</div>
+					</form>
 				</div>
 				<div class="com_bom">
-					<p>列表</p>
+					<h5 class="com_h5">评论列表</h5>
+					<ul class="com_ul">
+						<li>
+							<img class="round" width="50" height="50" avatar="王先生" color="#0D8ABC">
+							<div class="com_right" style="">
+								<p class="com_info_top"><a href="#">王先生</a><span style="float: right;">顶（18）</span></p>
+								<p class="com_info_center" style="">人，终究会有老去的一天。所以，我们应该这样面对生活，面朝大海，春暖花开花开花落。这样，当你回首过去，你会发现，我TM的到底都错过了什么！</p>
+								<div class="com_ul_bom">
+									<span>45分钟前</span>
+									<span>回复</span>
+								</div>
+								<!-- 二级评论 -->
+								<ul class="com_two">
+									<li>
+										<div class="com_two_div">
+											<p class="mb5"><a href="#">猫小鱼 </a>回复 <a href="#">@王先生</a>：<span>你说的都对！</span></p>
+											<div class="com_ul_bom">
+												<span>11分钟前</span>
+												<span>回复</span>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="com_two_div">
+											<p class="mb5"><a href="#">王先生 </a>回复 <a href="#">@猫小鱼</a>：<span>不知道你在说什么啊？</span></p>
+											<div class="com_ul_bom">
+												<span>15分钟前</span>
+												<span>回复</span>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="com_two_div">
+											<p class="mb5"><a href="#">猫小鱼 </a>回复 <a href="#">@王先生</a>：<span>人，终究会有老去的一天。所以，我们应该这样面对生活，面朝大海，春暖花开花开花落。这样，当你回首过去，你会发现，我TM的到底都错过了什么！</span></p>
+											<div class="com_ul_bom">
+												<span>48秒前</span>
+												<span>回复</span>
+											</div>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</li>
+						<li>
+							<img class="round" width="50" height="50" avatar="荒漠K先生" color="#15b6e6">
+							<div class="com_right" style="">
+								<p class="com_info_top"><a href="#">荒漠K先生</a><span style="float: right;">顶（18）</span></p>
+								<p class="com_info_center" style="">在亿万人海相遇有同样默契是多么不容易，你懂得我的固执我懂你脾气，两颗心在靠近，等不及解释我的心情，怕错过爱上你的时机。浪漫已经准备就全新的旅行多运在最美的年纪遇见你没有遗憾和可惜。</p>
+								<div class="com_ul_bom">
+									<span>45分钟前</span>
+									<span>回复</span>
+								</div>
+							</div>
+						</li>
+						<li>
+							<img class="round" width="50" height="50" avatar="Long Bro" color="#94b553">
+							<div class="com_right" style="">
+								<p class="com_info_top"><a href="#">Long Bro</a><span style="float: right;">顶（18）</span></p>
+								<p class="com_info_center" style="">人，终究会有老去的一天。所以，我们应该这样面对生活，面朝大海，春暖花开花开花落。这样，当你回首过去，你会发现，我TM的到底都错过了什么！</p>
+								<div class="com_ul_bom">
+									<span>45分钟前</span>
+									<span>回复</span>
+								</div>
+							</div>
+						</li>
+						<li>
+							<img class="round" width="50" height="50" avatar="猫小鱼" color="#dc875f">
+							<div class="com_right" style="">
+								<p class="com_info_top" ><a href="#">猫小鱼</a><span style="color: #888;float: right;font-size: 15px;">顶（18）</span></p>
+								<p style="text-align: justify;font-size: 15px;color: #666;margin-bottom: 15px;">我喜欢你，就像风走了八万里，不问归期！</p>
+								<div class="com_ul_bom">
+									<span>48分钟前</span>
+									<span>回复</span>
+								</div>
+								<!-- 二级评论 -->
+								<ul class="com_two">
+									<li>
+										<div class="com_two_div">
+											<p class="mb5"><a href="#">Long Bro </a>回复 <a href="#">@猫小鱼</a>：<span>谢谢你对我的喜欢，你是个好人！</span></p>
+											<div class="com_ul_bom">
+												<span>11分钟前</span>
+												<span>回复</span>
+											</div>
+										</div>	
+									</li>
+									<li>
+										<div class="com_two_div">
+											<p class="mb5"><a href="#">猫小鱼 </a>回复 <a href="#">@Long Bro</a>：<span>不要再对我发好人卡了！！！</span></p>
+											<div class="com_ul_bom">
+												<span>11分钟前</span>
+												<span>回复</span>
+											</div>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</li>
+						<li>
+							<img class="round" width="50" height="50" avatar="无极剑圣" color="#c9a2ca">
+							<div class="com_right" style="">
+								<p class="com_info_top"><a href="#">无极剑圣</a><span style="float: right;">顶（18）</span></p>
+								<p class="com_info_center" style="">一日为艾欧尼亚人,终身为艾欧尼亚人！</p>
+								<div class="com_ul_bom">
+									<span>45分钟前</span>
+									<span>回复</span>
+								</div>
+							</div>
+						</li>
+					</ul>
 				</div>
 			</div>
 		</div>
-
-		<img class="round" width="256" height="256" avatar="deml ok" color="#0D8ABC">
 	<!-- <script src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script> -->
 	<script src="js/headimg.js"></script>
 	</body>
