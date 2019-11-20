@@ -103,12 +103,12 @@
 											</div>
 											
 										</div>
-										<div class="replay_div" style="display: flex;">
+										<!-- <div class="replay_div" style="display: none;">
 											<input class="com_input" type="text" name="title" id="" value="回复@王先生 : "/>
 											<div class="repaly_btn_div">
 												<button class="replay_btn">回复</button>
 											</div>
-										</div>
+										</div> -->
 									</li>
 									<li>
 										<div class="com_two_div">
@@ -138,7 +138,7 @@
 								<p class="com_info_center" style="">在亿万人海相遇有同样默契是多么不容易，你懂得我的固执我懂你脾气，两颗心在靠近，等不及解释我的心情，怕错过爱上你的时机。浪漫已经准备就全新的旅行多运在最美的年纪遇见你没有遗憾和可惜。</p>
 								<div class="com_ul_bom">
 									<span>45分钟前</span>
-									<span id="replay">回复</span>
+									<span id="replay"><a href="javascript:void(0)">回复</a></span>
 								</div>
 							</div>
 						</li>
@@ -149,7 +149,7 @@
 								<p class="com_info_center" style="">人，终究会有老去的一天。所以，我们应该这样面对生活，面朝大海，春暖花开花开花落。这样，当你回首过去，你会发现，我TM的到底都错过了什么！</p>
 								<div class="com_ul_bom">
 									<span>45分钟前</span>
-									<span id="replay">回复</span>
+									<span id="replay"><a href="javascript:void(0)">回复</a></span>
 								</div>
 							</div>
 						</li>
@@ -160,7 +160,7 @@
 								<p style="text-align: justify;font-size: 15px;color: #666;margin-bottom: 15px;">我喜欢你，就像风走了八万里，不问归期！</p>
 								<div class="com_ul_bom">
 									<span>48分钟前</span>
-									<span id="replay">回复</span>
+									<span id="replay"><a href="javascript:void(0)">回复</a></span>
 								</div>
 								<!-- 二级评论 -->
 								<ul class="com_two">
@@ -212,19 +212,8 @@
 			var com='<li><img class="round" width="50" height="50" '+avatar_img+'><div class="com_right" style=""><p class="com_info_top"><a href="#">'+username+'</a><span style="float: right;">顶（18）</span></p><p class="com_info_center" style="">'+title+'</p><div class="com_ul_bom"><span>'+time+'</span><span id="replay"><a href="javascript:void(0)">回复</a></span></div></div></li>';
 			// $('.com_ul').prepend('<p>你好啊</p>')
 			$('.com_ul').prepend(com);
-			
 		}
 		$(document).ready(function(){
-			$('#replay1').click(function(){
-				var replay_div='<div class="replay_div"><input class="com_input" type="text" name="title" id="" value="回复@王先生 : "/><div class="repaly_btn_div"><button class="replay_btn">回复</button></div></div>';
-				$('.replay_div').css('display','flex');
-				// console.log($('.com_right .replay_div').length);
-				//最多只能有一个回复框
-				if($('.com_right .replay_div').length<1){
-					$(this).parents('.com_ul_bom').after(replay_div);
-				}
-				// console.log($(this).parents('.com_ul_bom'));
-			})
 			//点击回复事件
 			$('.com_ul').on('click','#replay',function(e){
 				console.log('点击了回复');		
@@ -232,6 +221,11 @@
 				var replay_div='<div class="replay_div"><input class="com_input" type="text" name="title" id="" value="回复@王先生 : "/><div class="repaly_btn_div"><button class="replay_btn">回复</button></div></div>';
 				// console.log($('.com_right .replay_div').length);
 				if($('.com_right .replay_div').length<1){
+					$(this).parents('.com_ul_bom').after(replay_div);
+				}else{
+					//已经有回复框存在的情况
+					console.log('已经有回复框存在了');
+					// $('..replay_div').css('display','none');
 					$(this).parents('.com_ul_bom').after(replay_div);
 				}
 				console.log($(this).parents('.com_ul_bom'))
