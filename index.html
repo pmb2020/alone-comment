@@ -20,7 +20,8 @@
 			.com_area_div{display: flex;flex-wrap: wrap;flex-direction: row-reverse;}
 			.com_area_div textarea{width: 100%;height: 100px;outline: none;border: 1px solid #ccc;padding: 10px;resize: none;font-size: 15px;color: #666;border-radius: 3px;}
 			.com_ul{margin-top: 20px;}
-			.com_ul li{display: flex;margin-bottom: 30px;}
+			.com_ul li{display: flex;border-bottom: 1px solid #EDEDED;padding: 30px 0;}
+			.com_ul li:last-child{border-bottom:none}
 			.com_h5{font-size: 16px;padding: 18px 0;margin-bottom: 30px;border-bottom: 1px solid #ccc;font-weight: normal;position: relative;}
 			.com_h5:after{content: "";position: absolute;width: 60px;height: 2px;content: "";background: #000;left: 0;bottom: 0;-moz-transition: all .5s ease;-webkit-transition: all .5s ease;transition: all .5s ease;}
 			.com_h5:hover:after{width: 80px;}
@@ -31,8 +32,8 @@
 			.com_ul_bom{font-size: 14px;color: #888;}
 			.com_ul_bom span{margin-right: 15px;}
 			.com_two{margin-top: 16px;background-color: #f3f3f3;padding: 15px;}
-			.com_two_div{font-size: 15px;color: #888;}
-			.com_two li{margin-bottom: 20px;flex-wrap: wrap;}
+			.com_two_div{font-size: 15px;color: #888;width: 100%;}
+			.com_two li{flex-wrap: wrap;padding: 15px 0;}
 			.com_two li :hover #replay{display: inline-block;}
 			.com_two a{color: #15b6e6;}
 			.com_two #replay{display: none;}
@@ -41,7 +42,7 @@
 			#replay{cursor: pointer;}
 			/* 回复 */
 			.replay_btn{background-color: #3CBF4C;outline: none;border: none;color: #fff;padding: 6px 25px;border-radius: 3px;align-self: flex-end;cursor: pointer;}
-			.replay_div{display: flex;flex-wrap: wrap;flex-direction: row-reverse;margin-top: 15px;display: none;}
+			.replay_div{display: flex;flex-wrap: wrap;flex-direction: row-reverse;margin-top: 15px;display: none;width: 100%;}
 			.replay_div input{width: 100%;height: 25px;padding: 8px 12px;}
 			.repaly_btn_div{padding: 12px 0;flex-wrap: wrap;}
 		</style>
@@ -93,7 +94,7 @@
 								</div>
 								<!-- 二级评论 -->
 								<ul class="com_two">
-									<li>
+									<li style="position: relative;">
 										<div class="com_two_div">
 											<p class="mb5"><a href="#">猫小鱼 </a>回复 <a href="#">@王先生</a>：<span>你说的都对！</span></p>
 											<div class="com_ul_bom">
