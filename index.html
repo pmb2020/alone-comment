@@ -39,6 +39,7 @@
 			.com_two #replay{display: none;}
 			.mb15{margin-bottom: 15px;}
 			.mb5{margin-bottom: 5px;}
+			.com_btn{cursor: pointer;outline: none;background-color: #15B6E6;border: none;color: #fff;padding: 8px 15px;border-radius: 3px;margin-top: 15px;}
 			#replay{cursor: pointer;}
 			/* 回复 */
 			.replay_btn{background-color: #3CBF4C;outline: none;border: none;color: #fff;padding: 6px 25px;border-radius: 3px;align-self: flex-end;cursor: pointer;}
@@ -46,10 +47,17 @@
 			.replay_div input{width: 100%;height: 25px;padding: 8px 12px;}
 			.repaly_btn_div{padding: 12px 0;flex-wrap: wrap;}
 			/* 带卡片评论 */
-			.com_card{height: 150px;width: 80%;background-color: #4ba4bf;margin: 0 auto;display: flex;border-radius: 8px;}
+			.com_card{height: 150px;width: 80%;background-color: #4ba4bf;margin: 0 auto;display: flex;border-radius: 8px;transition: All 1s ease-in-out;
+    -webkit-transition: All 1s ease-in-out;
+    -moz-transition: All 1s ease-in-out;
+    -o-transition: All 1s ease-in-out;}
 			.com_card_left{float: left;margin: auto;padding-left: 10px;}
 			.com_card_right{float: left;width: 100%;padding:0 15px;font-size: 12px;color: #fff;margin: auto;}
 			.com_card_right p{margin-bottom: 10px;}
+			#create_btn{
+				margin-left: 20%;
+				margin-top: 15%;
+			}
 		</style>
 	</head>
 	<body>
@@ -76,7 +84,7 @@
 						</div>
 					</div>
 					<div style="flex: 0 0 50%;max-width:50%;">
-						<div class="com_card" style="">
+						<div class="com_card" style="display: none;">
 							<div class="com_card_left" style="">
 								<img class="round" width="65" height="65" avatar="轻微的风" >
 							</div>
@@ -86,38 +94,18 @@
 								<p>网址：无</p>
 							</div>
 						</div>
+						<div class="create_com" style="height: 100%;width: 100%;">
+								<button id="create_btn" class="com_btn" style="">生成名片</button>
+						</div>
 					</div>
 					<div style="flex: 0 0 100%;margin-top: 15px;">
 						<div class="com_area_div" style="">
 							<textarea name="title" placeholder="欢迎到此一游!">欢迎到此一游！</textarea>
-							<input onclick="comment()" style="cursor: pointer;outline: none;background-color: #15B6E6;border: none;color: #fff;padding: 8px 15px;border-radius: 3px;margin-top: 15px;" type="submit" name=""  value="发表评论" />
+							<input onclick="comment()" class="com_btn" type="submit" name=""  value="发表评论" />
 						</div>
 					</div>
 				</div>
 				</form>
-				<!-- <div class="com_top" style="display: none;">
-					<form id="form01" action="#" method="post" onsubmit="return false">
-					<div class="com_input_div" style="">
-						<label style="">昵称：</label>
-						<input class="com_input" type="text" name="username" value="轻微的风">
-						<span class="com_tip" style=""><span style="color: red;">*</span> 必填项</span>
-					</div>
-					<div class="com_input_div" >
-						<label style="">邮箱：</label>
-						<input class="com_input" type="email" name="email">
-						<span class="com_tip" style=""><span style="color: red;">*</span> 必填项</span>
-					</div>
-					<div class="com_input_div" style="">
-						<label style="">网址：</label>
-						<input class="com_input" type="text" name="href">
-						<span class="com_tip">可选</span>
-					</div>
-					<div class="com_area_div" style="">
-						<textarea name="title" placeholder="欢迎到此一游!">欢迎到此一游！</textarea>
-						<input onclick="comment()" style="cursor: pointer;outline: none;background-color: #15B6E6;border: none;color: #fff;padding: 8px 15px;border-radius: 3px;margin-top: 15px;" type="submit" name=""  value="发表评论" />
-					</div>
-					</form>
-				</div> -->
 				<div class="com_bom">
 					<h5 class="com_h5">评论列表</h5>
 					<ul class="com_ul">
@@ -181,7 +169,7 @@
 								<p class="com_info_top"><a id="name1" href="#">荒漠K先生</a><span style="float: right;">顶（18）</span></p>
 								<p class="com_info_center" style="">在亿万人海相遇有同样默契是多么不容易，你懂得我的固执我懂你脾气，两颗心在靠近，等不及解释我的心情，怕错过爱上你的时机。浪漫已经准备就全新的旅行多运在最美的年纪遇见你没有遗憾和可惜。</p>
 								<div class="com_ul_bom">
-									<span>45分钟前</span>
+									<span>5分钟前</span>
 									<span id="replay"><a href="javascript:void(0)">回复</a></span>
 								</div>
 							</div>
@@ -210,7 +198,7 @@
 								<ul class="com_two">
 									<li>
 										<div class="com_two_div">
-											<p class="mb5"><a href="#">Long Bro </a>回复 <a href="#">@猫小鱼</a>：<span>谢谢你对我的喜欢，你是个好人！</span></p>
+											<p class="mb5"><a id="name2" href="#">Long Bro </a>回复 <a href="#">@猫小鱼</a>：<span>谢谢你对我的喜欢，你是个好人！</span></p>
 											<div class="com_ul_bom">
 												<span>11分钟前</span>
 												<span id="replay">回复</span>
@@ -219,7 +207,7 @@
 									</li>
 									<li>
 										<div class="com_two_div">
-											<p class="mb5"><a href="#">猫小鱼 </a>回复 <a href="#">@Long Bro</a>：<span>不要再对我发好人卡了！！！</span></p>
+											<p class="mb5"><a id="name2" href="#">猫小鱼 </a>回复 <a href="#">@Long Bro</a>：<span>不要再对我发好人卡了！！！</span></p>
 											<div class="com_ul_bom">
 												<span>11分钟前</span>
 												<span id="replay">回复</span>
@@ -232,7 +220,7 @@
 						<li>
 							<img class="round" width="50" height="50" avatar="无极剑圣" color="#c9a2ca">
 							<div class="com_right" style="">
-								<p class="com_info_top"><a href="#">无极剑圣</a><span style="float: right;">顶（18）</span></p>
+								<p class="com_info_top"><a id="name1" href="#">无极剑圣</a><span style="float: right;">顶（18）</span></p>
 								<p class="com_info_center" style="">一日为艾欧尼亚人,终身为艾欧尼亚人！</p>
 								<div class="com_ul_bom">
 									<span>45分钟前</span>
@@ -262,31 +250,68 @@
 			//ajax提交数据到服务器
 		}
 		$(document).ready(function(){
+			// 页面加载完毕，先判断cookie是否存在，决定是否显示小卡片
+			if(getCookie('username')){
+				console.log('sss');
+			}else{
+				console.log('111')
+			}
+			
 			//点击回复事件
 			$('.com_ul').on('click','#replay',function(e){
-				console.log('点击了回复');
+				// console.log('点击了回复');
 				var name=$(this).parents('.com_ul_bom').prevAll('.com_info_top').children('#name1').text();
 				if(!name){
-					// console.log('不存在name1')
 					name=$(this).parents('.com_two_div').children('p').children('#name2').text();
 				}
-				var replay_div='<div class="replay_div"><input class="com_input" type="text" name="title" id="" value="回复 @ '+name+' : "/><div class="repaly_btn_div"><button class="replay_btn" id="twoReplay">回复</button></div></div>';
-				console.log($('.com_right .replay_div').length);
+				setCookie('replayname',name);//将要@的人存入cookie
+				var replay_div='<div class="replay_div"><input class="com_input" type="text" name="title" placeholder="回复 @ '+name+' : "/><div class="repaly_btn_div"><button class="replay_btn" id="twoReplay">回复</button></div></div>';
 				if($('.com_right .replay_div').length<1){
 					$(this).parents('.com_ul_bom').after(replay_div);
-					console.log('要回复的人是：');
-					console.log(name)
+					// console.log('要回复的人是：');
+					// console.log(name);
 				}else{
 					//已经有回复框存在的情况
 					// console.log('已经有回复框存在了');
 					$(".replay_div").remove();
 					$(this).parents('.com_ul_bom').after(replay_div);
-					
 				}
 			})
 			// 动态回复按钮监听
 			$('.com_right').on('click','.replay_btn',function(){
-				console.log('回复按钮就是你了')
+				// console.log('回复按钮就是你了');
+				if(getCookie('username')){
+					var replaytext=$(this).parents('.replay_div').children('input').val();
+					console.log(replaytext);
+					var replaycontent='<li><div class="com_two_div"><p class="mb5"><a id="name2" href="#">'+getCookie('username')+' </a>回复 <a href="#">@'+getCookie('replayname')+'</a>：<span>'+replaytext+'</span></p><div class="com_ul_bom"><span>15分钟前</span><span id="replay">回复</span></div></div></li>';
+					if(!replaytext==''){
+						// $(this).parents('.com_two').prepend(replaycontent);
+						//判断是否存在二级com_two元素
+						if($(this).parents('.com_right').children('.com_two').length<1){
+							replaycontent='<ul class="com_two">'+replaycontent+'</ul>';
+							$(this).parents('.com_right').append(replaycontent);
+						}else{
+							$(this).parents('.com_right').children('.com_two').prepend(replaycontent);
+						}
+						$(this).parents('.replay_div').remove();
+						//ajax发送数据
+					}else{
+						alert('内容不能为空哦');
+					}
+					// alert(getCookie('replayname'));
+					// console.log($(this).parents('.replay_div').children('input').val());
+				}else{
+					alert('请您先生成小名片');
+				}
+			})
+			// 创建小名片按钮点击
+			$('#create_btn').click(function(){
+				$(this).remove();
+				$('.create_com').css('display','none');
+				$('.com_card').css('display','flex');
+				setTimeout(function () {
+					$('.com_card').css('transform','rotateY(360deg)');
+				}, 10);
 			})
 		})
 		
