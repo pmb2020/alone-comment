@@ -239,8 +239,17 @@
 		function comment(){
 			// console.log($('#form0').serialize());//ajax提交表单数据
 			var username=$("input[ name='username' ] ").val();
+			var email=$("input[ name='email' ] ").val();
 			var title=$("textarea[ name='title' ] ").val();
 			var time='45分钟前';
+			console.log(email);
+			if (!isEmail(email)) {
+				alert('请填写正确的邮箱哦！');
+				$("input[ name='email' ] ").focus();
+				$("input[ name='email' ] ").val('');
+			}
+	
+			return ;
 			var avatar_img='src="'+LetterAvatar(username,50)+'" title="'+username+'" alt="'+username+'"';
 			var com='<li><img class="round" width="50" height="50" '+avatar_img+'><div class="com_right" style=""><p class="com_info_top"><a href="#">'+username+'</a><span style="float: right;">顶（18）</span></p><p class="com_info_center" style="">'+title+'</p><div class="com_ul_bom"><span>'+time+'</span><span id="replay"><a href="javascript:void(0)">回复</a></span></div></div></li>';
 			// $('.com_ul').prepend('<p>你好啊</p>')
@@ -362,6 +371,15 @@
 		var cval=getCookie(name);
 		if(cval!=null)
 		document.cookie= name + "="+cval+";expires="+exp.toGMTString();
+		}
+		//验证邮箱
+		function isEmail(email){
+			var reg = /^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/;
+			if(reg.test(email)){
+				return true;
+			}else{
+				return false;
+			}
 		}
 	</script>
 	</body>
