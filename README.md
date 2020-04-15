@@ -16,16 +16,21 @@
 后台接口调试，时间和点赞
 
 评论数据库设计
-id 
-p_id(默认为0留言系统，其他为文章评论)
+id
 is_top是否置顶
-username（用户昵称）
-com_id（默认0一级评论，其他则为二级评论）
-title(评论自由)
-time
-ip（char16）
-address(varchar20)
-zan
+status 代表是否审核通过
+username 昵称
+article_id 文章id（0代表留言版）
+replay_id （默认0一级评论，其他则为二级评论）
+content 评论内容
+href 网址链接
+email 邮箱
+ip  评论ip（char16）
+time 时间
+address 地址(varchar20)
+zan 点赞数
+
+
 
 常见问题一：js cookie不生效，cookie读取不出来
 因为你是在本地直接打开的文件，放到域名下就可以了

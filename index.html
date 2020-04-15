@@ -86,16 +86,16 @@
 					<div style="flex: 0 0 50%;max-width:50%;">
 						<div class="com_card" style="display: none;">
 							<div class="com_card_left" style="">
-								<img class="round" width="65" height="65" avatar="轻微的风" >
+								<img id="avatar" class="round" width="65" height="65" avatar="" >
 							</div>
 							<div class="com_card_right" style="">
-								<p>name：轻微的风</p>
-								<p style="white-space: nowrap;">Email：pmb2020@163.com</p>
-								<p>网址：无</p>
+								<p>name：<span id="username">轻微的风</span></p>
+								<p style="white-space: nowrap;">Email： <span id="email">pmb2020@163.com</span></p>
+								<p>网址：<span id="href">无</span></p>
 							</div>
 						</div>
 						<div class="create_com" style="height: 100%;width: 100%;">
-								<button id="create_btn" class="com_btn" style="">生成名片</button>
+							<button id="create_btn" class="com_btn" style="">生成名片</button>
 						</div>
 					</div>
 					<div style="flex: 0 0 100%;margin-top: 15px;">
@@ -248,7 +248,7 @@
 				var email=getCookie('email');
 				var url=getCookie('url');
 			}else{
-				alert('请先生成ID身份证才能评论');return false;
+				alert('生成名片后，才能评论哦');return false;
 			}
 			var avatar_img='src="'+LetterAvatar(username,50)+'" title="'+username+'" alt="'+username+'"';
 			var com='<li><img class="round" width="50" height="50" '+avatar_img+'><div class="com_right" style=""><p class="com_info_top"><a href="#">'+username+'</a><span style="float: right;">顶（18）</span></p><p class="com_info_center" style="">'+title+'</p><div class="com_ul_bom"><span>'+time+'</span><span id="replay"><a href="javascript:void(0)">回复</a></span></div></div></li>';
@@ -261,6 +261,7 @@
 		$(document).ready(function(){
 			// 页面加载完毕，先判断cookie是否存在，决定是否显示小卡片
 			if(getCookie('username')){
+				$('#avatar').attr('src',LetterAvatar(getCookie('username'),50))
 				console.log('存在cookie');
 				$('.create_com').css('display','none');
 				$('.com_card').css('display','flex');
@@ -294,7 +295,6 @@
 			})
 			// 动态回复按钮监听
 			$('.com_right').on('click','.replay_btn',function(e){
-				// console.log('回复按钮就是你了');
 				if(getCookie('username')){
 					var replaytext=$(this).parents('.replay_div').children('input').val();
 					console.log(replaytext);
@@ -319,30 +319,50 @@
 					alert('请您先生成小名片');
 				}
 			})
+			
 			// 创建小名片按钮点击
 			$('#create_btn').click(function(){
 				var username=$("input[ name='username' ] ").val();
 				var email=$("input[ name='email' ] ");
 				var url=$("input[ name='href' ] ");
 				var title=$("textarea[ name='title' ] ").val();
-				if (!isEmail(email.val())) {
-					alert('请填写正确的邮箱哦！');
-					email.focus();
-					email.val('');return false;
-				}else if(!checkUrl(url.val())){
-					alert('请填写正确的链接哦！');
-					url.focus();
-					url.val('');
-					return false;
-				}else{
-					url=url.val();
-					email=email.val();
-					// 验证通过，数据存入cookie，并生成小名片
-					setCookie('username',username);
-					setCookie('email',email);
-					setCookie('url',url);
-					// console.log(getCookie('username'));
-				}
+				
+				url=url.val()||'无';
+				email=email.val()||'无';
+				
+				if(!username){alert('请先填写昵称哦！');return false;}
+				// console.log(email);
+				// return false;
+				// 验证通过，数据存入cookie，并生成小名片
+				setCookie('username',username);
+				setCookie('email',email);
+				setCookie('url',url);
+				// var avatar_img='src="'+LetterAvatar(username,50)+'" title="'+username+'" alt="'+username+'"';
+				$('#avatar').attr('src',LetterAvatar(username,50))
+				$('#username').text(username)
+				$('#email').text(email)
+				$('#href').text(url)
+				
+				// if (!isEmail(email.val())) {
+				// 	// 暂时不验证邮箱
+				// 	alert('请填写正确的邮箱哦！');
+				// 	email.focus();
+				// 	email.val('');return false;
+				// }else if(!checkUrl(url.val())){
+				// 	// 暂时不验证链接
+				// 	alert('请填写正确的链接哦！');
+				// 	url.focus();
+				// 	url.val('');
+				// 	return false;
+				// }else{
+				// 	url=url.val();
+				// 	email=email.val();
+				// 	// 验证通过，数据存入cookie，并生成小名片
+				// 	setCookie('username',username);
+				// 	setCookie('email',email);
+				// 	setCookie('url',url);
+				// 	// console.log(getCookie('username'));
+				// }
 				$(this).remove();
 				$('.create_com').css('display','none');
 				$('.com_card').css('display','flex');
